@@ -2,7 +2,6 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -15,7 +14,7 @@ export class UserService {
 
     const data: CreateUserDto = {
       ...createUserDto,
-      password: await bcrypt.hash(createUserDto.password, 16),
+      password: await bcrypt.hash(createUserDto.password, 10),
     };
 
     await this.prisma.user.create({ data });

@@ -26,11 +26,12 @@ export class AuthService {
   }
 
   signin(user: User) {
-    const { id, email, name } = user;
+    const { id, email, name, role } = user;
     const jwtPayload = {
       sub: id,
       email,
       name,
+      role,
     };
     const jwtToekn = this.jwtService.sign(jwtPayload);
     return { jwtToekn };

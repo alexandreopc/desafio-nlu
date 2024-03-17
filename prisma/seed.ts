@@ -3,7 +3,7 @@ import { hash } from 'bcrypt';
 
 const prisma = new PrismaClient();
 async function main() {
-  const password = await hash('admin', 10);
+  const password = await hash('abc123', 10);
 
   await prisma.user.upsert({
     where: { email: 'adm@nlu.com' },
@@ -12,6 +12,7 @@ async function main() {
       name: 'admin',
       email: 'adm@nlu.com',
       password,
+      role: 1,
       tasks: {
         create: [
           {
@@ -22,6 +23,29 @@ async function main() {
           {
             name: 'Task de teste',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+          },
+        ],
+      },
+    },
+  });
+
+  await prisma.user.upsert({
+    where: { email: 'user@nlu.com' },
+    update: {},
+    create: {
+      name: 'user',
+      email: 'user@nlu.com',
+      password,
+      role: 2,
+      tasks: {
+        create: [
+          {
+            name: 'Entregar o desafio ate Domingo',
+            content: 'Texto de para preencher espaco.',
+          },
+          {
+            name: 'Eu sou uma task',
+            content: 'E sou a descricao da task',
           },
         ],
       },

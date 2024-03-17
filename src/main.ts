@@ -19,6 +19,8 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Documentação com Swagger')
     .setDescription('ELABORAR SUBTEXTO')
+    .addBearerAuth()
+    .addSecurityRequirements('bearer')
     .setVersion('1.0')
     .addTag('user')
     .addTag('auth')

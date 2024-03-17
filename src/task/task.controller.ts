@@ -36,6 +36,7 @@ export class TaskController {
     return this.taskService.findById(+id);
   }
 
+  @Roles(UserType.Admin)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
     return this.taskService.update(+id, updateTaskDto);

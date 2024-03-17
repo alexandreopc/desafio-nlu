@@ -42,6 +42,7 @@ export class TaskController {
     return this.taskService.update(+id, updateTaskDto);
   }
 
+  @Roles(UserType.Admin)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.taskService.remove(+id);

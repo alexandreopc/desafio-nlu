@@ -66,6 +66,18 @@ export class UserService {
     return result;
   }
 
+  async updateRole(id: number, role: number) {
+    const result = await this.prisma.user.update({
+      where: {
+        id,
+      },
+      data: role,
+    });
+    delete result.password;
+
+    return result;
+  }
+
   remove(id: number) {
     return this.prisma.user.delete({ where: { id } });
   }

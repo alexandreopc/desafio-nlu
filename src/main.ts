@@ -18,7 +18,11 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Documentação com Swagger')
-    .setDescription('ELABORAR SUBTEXTO')
+    .setDescription(
+      `Todas os endpoints (com exceção de POST /user e POST /singin) exigem o header Authorization. 
+      Para ter acessos a todos endpoints é necessario cadastrar o token JWT no botao verde com cadeado escrito "Authorize" ( token é obtido no endpoint POST /signin).`,
+    )
+    .
     .addBearerAuth()
     .addSecurityRequirements('bearer')
     .setVersion('1.0')

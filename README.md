@@ -25,7 +25,7 @@ npm i --legacy-peer-deps
 3. Create a PostgreSQL database
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 4. Configure the `.env.development` file using the `.env.example` file
